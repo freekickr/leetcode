@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class TwoSum {
 
-    //all of these methods were sorted according to runtime (descending)
+    //methods were sorted in order of runtime (descending)
 
     public static int[] twoSum1(int[] nums, int target) {
         ArrayList<Integer> numsList = new ArrayList<>();

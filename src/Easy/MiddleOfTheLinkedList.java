@@ -64,7 +64,7 @@ public class MiddleOfTheLinkedList {
     }
 }
 
-//slightly changed it to make a nodes chain
+//slightly changed it to make a nodes chain.
 class ListNode {
     int val;
     ListNode next;

@@ -1,6 +1,8 @@
 package Easy;
 
 /*
+Unique Morse Code Words
+
 International Morse Code defines a standard encoding where each letter is mapped to a series of dots and dashes,
 as follows: "a" maps to ".-", "b" maps to "-...", "c" maps to "-.-.", and so on.
 For convenience, the full table for the 26 letters of the English alphabet is given below:
@@ -12,19 +14,19 @@ We'll call such a concatenation, the transformation of a word.
 Return the number of different transformations among all words we have.
 
 Example:
-Input: words = ["gin", "zen", "gig", "msg"]
-Output: 2
-Explanation:
-The transformation of each word is:
-"gin" -> "--...-."
-"zen" -> "--...-."
-"gig" -> "--...--."
-"msg" -> "--...--."
+    Input: words = ["gin", "zen", "gig", "msg"]
+    Output: 2
+    Explanation:
+    The transformation of each word is:
+    "gin" -> "--...-."
+    "zen" -> "--...-."
+    "gig" -> "--...--."
+    "msg" -> "--...--."
 
 Note:
-The length of words will be at most 100.
-Each words[i] will have length in range [1, 12].
-words[i] will only consist of lowercase letters.
+    The length of words will be at most 100.
+    Each words[i] will have length in range [1, 12].
+    words[i] will only consist of lowercase letters.
  */
 
 import java.util.HashMap;

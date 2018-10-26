@@ -27,16 +27,28 @@ public class ReverseInteger {
 
     public static int reverse(int x) {
         try {
-            if (x >= 0) {
-                StringBuilder sb = new StringBuilder(String.valueOf(x));
-                return Integer.parseInt(sb.reverse().toString());
-            } else {
-                StringBuilder sb = new StringBuilder(String.valueOf(Math.abs(x)));
-                return -Integer.parseInt(sb.reverse().toString());
-            }
+            if (x >= 0)
+                return Integer.parseInt(new StringBuilder(String.valueOf(x)).reverse().toString());
+            else
+                return -Integer.parseInt(new StringBuilder(String.valueOf(Math.abs(x))).reverse().toString());
         } catch (NumberFormatException e) {
             return 0;
         }
+    }
+
+    public static int reverse2(int x) {
+        int res = 0;
+        int temp = 0;
+        while(x != 0){
+            int tail = x%10;
+            temp = res*10 + tail;
+            if((temp - tail)/10 != res) // judge whether res is flow out.
+                return 0;
+            res = temp;
+            x = x/10;
+        }
+
+        return res;
     }
 
     public static void main(String[] args) {

@@ -5,14 +5,15 @@ Number of Lines To Write String
 
 We are to write the letters of a given string S, from left to right into lines. Each line has maximum width 100 units,
 and if writing a letter would cause the width of the line to exceed 100 units, it is written on the next line.
-We are given an array widths, an array where widths[0] is the width of 'a', widths[1] is the width of 'b', ..., and widths[25] is the width of 'z'.
+We are given an array widths, an array where widths[0] is the width of 'a', widths[1] is the width of 'b', ...,
+and widths[25] is the width of 'z'.
 Now answer two questions: how many lines have at least one character from S, and what is the width used by the last such line?
 Return your answer as an integer list of length 2.
 
 Example :
     Input:
-    widths = [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]
-    S = "abcdefghijklmnopqrstuvwxyz"
+        widths = [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]
+        S = "abcdefghijklmnopqrstuvwxyz"
     Output: [3, 60]
     Explanation:
     All letters have the same length of 10. To write all 26 letters,
@@ -20,8 +21,8 @@ Example :
 
 Example :
     Input:
-    widths = [4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]
-    S = "bbbcccdddaaa"
+        widths = [4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]
+        S = "bbbcccdddaaa"
     Output: [2, 4]
     Explanation:
     All letters except 'a' have the same length of 10, and
@@ -37,14 +38,44 @@ Note:
     widths[i] will be in the range of [2, 10].
  */
 
+import java.util.ArrayList;
+import java.util.List;
+
+//another weird task
 public class NumberOfLinesToWriteStr {
 
     public static int[] numberOfLines(int[] widths, String S) {
-        
-        return widths;
+        int lines = 1, width = 0;
+        for (char c: S.toCharArray()) {
+            int w = widths[c - 'a'];
+            width += w;
+            if (width > 100) {
+                lines++;
+                width = w;
+            }
+        }
+        return new int[]{lines, width};
     }
 
-    public static void main(String[] args) {
+    public static int[] numberOfLines2(int[] widths, String S) {
+        char[] letters = S.toCharArray();
+        int lines = 1;
+        int length = 0;
+        for (int i = 0; i < letters.length; i++) {
+            if (length + widths[letters[i] - 'a'] > 100) {
+                lines++;
+                length = widths[letters[i] - 'a'];
+            } else {
+                length += widths[letters[i] - 'a'];
+            }
+        }
+        return new int[]{lines, length};
+    }
 
+
+    public static void main(String[] args) {
+        int[] result = numberOfLines2(new int[]{10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10}, "abcdefghijklmnopqrstuvwxyz");
+        for (int i : result)
+            System.out.print(i + " ");
     }
 }
